@@ -6,6 +6,7 @@ const app = new Vue({
     data: {
 
         mailGenerate : [],
+        // mailComplete : [],
 
     },
    
@@ -16,12 +17,18 @@ const app = new Vue({
     mounted() {
 
         // generare 10 indirizzi email e stamparli in pagina all'interno di una lista.
-        for (let index = 1; index < 10; index++) {
+        for (let index = 0; index < 10; index++) {
             axios
             .get('https://flynn.boolean.careers/exercises/api/random/mail')
             .then(response => {
                 this.mailGenerate.push(response.data.response)
-                console.log(this.mailGenerate);
+
+                //Far comparire gli indirizzi email solamente quando sono stati tutti generati.
+                // if(this.mailGenerate.length === 10){
+                    
+                //     this.mailComplete = this.mailGenerate
+                // }
+                
             })      
         } 
     },
